@@ -1,15 +1,39 @@
 {% extends 'base.html.twig' %}
 {% block title %}Acceuil{% endblock %}
 {% block body %}
-    <div class="jumbotron text-center">
+    <div class="jumbotron">
         <div class="container">
-            <h1>Acheter un biens</h1>
+            {{ form_start(form) }}
+            <div class="form-row align-items-end">
+                <div class="col">
+                    {{ form_row(form.minSurface) }}
+                </div>
+                <div class="col">
+                    {{ form_row(form.maxPrice) }}
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <button class="btn btn-primary">Rechercher</button>
+                    </div>
+                </div>
+
+            </div>
+            {{ form_end(form) }}
         </div>
-        <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto deleniti doloribus eligendi
-            facilis ipsum, neque nulla ratione voluptatem? A alias aliquid aut, culpa debitis eius eos expedita,
-            in ipsam iste laboriosam laudantium minus pariatur quo recusandae, repellat tempora temporibus voluptatem.
-        </p>
+
+    </div>
+    <div class="container mt-4">
+        <h1>Voir nos biens</h1>
+        <div class="row">
+            {% for property in properties  %}
+                <div class="col-md-4">
+                    {% include 'property/_property.html.twig' %}
+                </div>
+            {% endfor %}
+        </div>
+        <div class="pagination">
+            {{ knp_pagination_render(properties) }}
+        </div>
     </div>
 {% endblock %}
 

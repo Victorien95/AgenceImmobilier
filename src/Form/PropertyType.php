@@ -28,6 +28,7 @@ class PropertyType extends AbstractType
         ;
     }
 
+
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
@@ -46,4 +47,5 @@ class PropertyType extends AbstractType
         return $output;
         
     }
+
 }
